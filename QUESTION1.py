@@ -1,74 +1,68 @@
-singlerecord = []
-studList = []
-choice = 'y'
-while choice.lower() != 'n':
-    studName = input('enter your name ')
-    Rollno = int(input('enter your Rollno '))
-    cgpa = int(input('cgpa :'))
-    singlerecord.append(studName)
-    singlerecord.append(Rollno)
-    singlerecord.append(cgpa)
-    studList.append(singlerecord)
-    singlerecord = []
-    choice = input('enter your choice [y/n]')
+
+import os
+import platform
+import listofstudents
+def studentmanagement():
+    print("\n++++++ Welcome to Saint Paul's High School Student Management System ++++++\n")
+    print("[Choice 1: Showing the List of Student]")
+    print("[Choice 2: Add New Student]")
+    print("]Choice 3: Searching Student]")
+    print("[Choice 4: Deleting a Student]\n")
+try:
+    x=int(input("Enter a choice:")
+except ValueError as e:
+    print("\nHy! This is not a Number", e)
+else:
+    print("\n")
+if x== '1':
+    print(listofstudents.studentlist())
+    for students in listofstudents.studentlist():
+        print("++ {} ++".format(students))
+
+elif x =='2':
+    studentnew = iput("Enter New Student: ")
+if (studentnew in listofstudents.studentlist()):
+    print("\nThis Student {} Already In The Table".format(studentnew))
+else:
+        listofstudents.studentlist().append(studentnew)
+    print("\n++ New Student {} Added Successfully ++\n".format(studentnew))
+    for students in listofstudents.studentlist():
+        print("++ {} ++".format(students))
+
+elif x =='3':
+    studentsearching = input("Choose Student Name To Search: ")
+if (studentsearching in listofstudents.studentlist()):
+        print("\n++ There is a Record Found of this Student {} ++".format(studentsearching))
+else:
+        print("\n++ There is No Record Found Of this Student {} ++".format(studentsearching))
+
+elif x =='4':
+    studentdelete = input("Choose a Student Name To Delete: ")
+if (studentdelete in listofstudents.studentlist()):
+        listofstudents.studentlist().remove(studentdelete)
+    for students in listofstudents.studentlist():
+        print("++ {} ++".format(students))
+else:
+        print("\n++ There is No Record Found of This Student {} ++".format(studentdelete))
+
+elif (x <'1' or x >'4':
+    print("Please Enter Valid Choice")
+
+studentmanagement()
 
 
-# append
-def appendStudent():
-    global studList
-    singlr = []
-    studName = input('enter your name')
-    Rollno = input('enter your Rollno')
-    cgpa = int(input('cgpa :'))
-    singlr.append(studName)
-    singlr.append(Rollno)
-    singlr.append(cgpa)
-    studList.append(singlr)
+def continueAgain():
+        runningagain = input("\nWant to continue the process yes/no?: ")
 
 
-# remove existing record by rollno
-def removeRecord():
-    global studList
-    rolln = int(input("enter student's rollno:"))
-    for record in studList:
-        if rolln in record:
-            studList.remove(record)
+if (runningagain.lower() == 'yes'):
+if (platform.system() == "Windows"):
+            print(os.system('cls'))
+else:
+        print(os.system('clear'))
+    studentmanagement()
+    continueAgain()
+else:
+    quit()
 
-
-# view student by name:
-def viewRecord():
-    name = input("enter student's name:")
-    for record in studList:
-        if name in record:
-            print(record)
-
-
-# copy
-def copyList():
-    print("what to do??")
-
-
-# remove all
-def removeAll():
-    studList.clear()
-
-
-choice2 = 'y'
-while (choice2 == 'y'):
-    find = int(input("Enter \n option 1 : Append student \n option 2: remove student by Rollno\n option 3: view student by name\n option 4: copy list\n option 5: remove all students option \n 6: exit"))
-    if (find == 1):
-        appendStudent()
-    elif (find == 2):
-        removeRecord()
-    elif (find == 3):
-        viewRecord()
-    elif (find == 4):
-        copyList()
-    elif (find == 5):
-        removeAll()
-    elif (find == 6):
-        exit
-    else:
-        print("enter correct option !!")
-    choice2 = input("do u want to continue ? say y or n : \n")
-print(studList)
+continueAgain()
